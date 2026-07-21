@@ -494,7 +494,7 @@
         const steps = Array.from(form.querySelectorAll('.form-step'));
         const progressFill = document.getElementById('progressFill');
         const submitBtn = document.getElementById('submitBtn');
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwCQe0mXVSfvbGTqpzYHWp7qVU9jKEhy-qvjTYj3r6sVGEE1iDfwpcLzaZTs65rbrpGPQ/exec'; 
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxLNF6Io-Lz9Bif2Dy_8B55WXTAmBdTVN57baHVdFOEK4JUbUuI2j1fCMn6eHRQvQ4nVA/exec'; 
 
         let currentStep = 0;
 
@@ -546,22 +546,30 @@
           }
         });
 
-        form.addEventListener('submit', e => {
-          e.preventDefault();
-          submitBtn.disabled = true;
-          submitBtn.innerText = 'جاري إرسال الطلب...';
+    form.addEventListener('submit', e => {
+  e.preventDefault();
+  submitBtn.disabled = true;
+  submitBtn.innerText = 'جاري إرسال الطلب...';
 
-          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => {
-              window.location.href = 'https://www.bariabder.com/thank-you';
-            })
-            .catch(error => {
-              console.error('Error!', error.message);
-              alert('حدث خطأ أثناء إرسال البيانات، يرجى إعادة المحاولة.');
-              submitBtn.disabled = false;
-              submitBtn.innerText = 'إرسال الطلب الآن';
-            });
-        });
+  // Convert FormData to URL-encoded parameters for Apps Script
+  const searchParams = new URLSearchParams(new FormData(form));
+
+  fetch(scriptURL, {
+    method: 'POST',
+    mode: 'no-cors', // Prevents browser CORS blocks on redirects
+    body: searchParams
+  })
+    .then(() => {
+      // Direct user immediately to thank-you page after dispatching payload
+      window.location.href = 'https://www.bariabder.com/thank-you';
+    })
+    .catch(error => {
+      console.error('Error!', error.message);
+      alert('حدث خطأ أثناء إرسال البيانات، يرجى إعادة المحاولة.');
+      submitBtn.disabled = false;
+      submitBtn.innerText = 'إرسال الطلب الآن';
+    });
+});
 
         updateFormDisplay();
       });
