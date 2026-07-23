@@ -1,0 +1,485 @@
+/* ============================================
+   DESIGN TOKENS & PALETTE OVERRIDES
+   ============================================ */
+:root {
+  /* Default Light Theme */
+  --bg-primary: #FAFAFC;
+  --bg-secondary: #f1f0f6;
+  --bg-card: #FFFFFF;
+  
+  --text-main: #1A1924;
+  --text-muted: #6B6875;
+  --text-faint: #9C98A8;
+  
+  --border-light: rgba(20, 18, 30, 0.09);
+  --border-strong: rgba(20, 18, 30, 0.16);
+  
+  --accent-purple: #524BB5;
+  --accent-hover: #443C9E;
+  --accent-soft: rgba(82, 75, 181, 0.08);
+  --accent-border: rgba(82, 75, 181, 0.35);
+  
+  --max-width: 680px;
+  --font-family: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
+  --radius-pill: 9999px;
+  --radius-card: 18px;
+  --radius-sm: 10px;
+  --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-card: 0 10px 28px rgba(0, 0, 0, 0.05);
+}
+
+/* Matched Dark Theme Palette */
+[data-theme="dark"] {
+  --bg-primary: #22242B;
+  --bg-secondary: #2C2E38;
+  --bg-card: #353844;
+  
+  --text-main: #F8FAFC;
+  --text-muted: #CBD5E1;
+  --text-faint: #94A3B8;
+  
+  --border-light: #3D4150;
+  --border-strong: #4A4F62;
+  
+  --accent-purple: #8B80F0;
+  --accent-hover: #9990F2;
+  --accent-soft: rgba(139, 128, 240, 0.12);
+  --accent-border: rgba(139, 128, 240, 0.35);
+  
+  --shadow-card: 0 10px 28px rgba(0, 0, 0, 0.25);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-primary);
+  background-image: 
+    radial-gradient(circle at 85% -10%, rgba(139, 128, 240, 0.08), transparent 55%),
+    radial-gradient(circle at -10% 110%, rgba(139, 128, 240, 0.06), transparent 50%);
+  background-attachment: fixed;
+  color: var(--text-main);
+  line-height: 1.8;
+  direction: rtl;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--text-main);
+}
+
+/* --- Sticky Navigation Bar --- */
+.navbar {
+  position: sticky;
+  top: 0;
+  background: rgba(34, 36, 43, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-light);
+  z-index: 100;
+  padding: 12px 20px;
+}
+
+:root:not([data-theme="dark"]) .navbar {
+  background: rgba(250, 250, 252, 0.85);
+}
+
+.nav-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+.brand-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid var(--border-light);
+}
+
+.brand-name {
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  color: var(--text-main);
+  background-color: var(--bg-secondary);
+  border-color: var(--border-strong);
+}
+
+.btn-nav-subscribe {
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-hover));
+  color: #FFFFFF;
+  padding: 6px 18px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 14px var(--accent-soft);
+  transition: var(--transition);
+}
+
+.btn-nav-subscribe:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px var(--accent-soft);
+}
+
+/* --- Shared Utility Elements --- */
+.btn {
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-hover));
+  color: #FFFFFF;
+  border: none;
+  box-shadow: 0 4px 14px var(--accent-soft);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px var(--accent-soft);
+}
+
+.banner-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-purple);
+  background: var(--accent-soft);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 12px;
+}
+
+.styled-list {
+  list-style: none;
+  margin: 10px 0;
+  padding-right: 0;
+}
+
+.styled-list li {
+  margin-bottom: 8px;
+  padding: 10px 14px;
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  border-right: 3px solid var(--accent-purple);
+  color: var(--text-main);
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   CONSULTATION PAGE LAYOUT
+   ============================================ */
+.consultation-container {
+  max-width: 1100px;
+  margin: 40px auto 80px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 36px;
+  align-items: flex-start;
+}
+
+.consultation-info {
+  flex: 1.2;
+  order: 1; /* First element in RTL (Right Side) */
+}
+
+.consultation-booking {
+  flex: 0.9;
+  order: 2; /* Second element in RTL (Left Side) */
+  position: sticky;
+  top: 90px;
+}
+
+.consultation-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--text-main);
+  margin: 12px 0 16px;
+}
+
+.consultation-intro {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.info-block {
+  margin-top: 24px;
+}
+
+.info-block-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 10px;
+}
+
+/* ============================================
+   CONSULTATION BOOKING CARD & GALLERY
+   ============================================ */
+.booking-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.consultation-images {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.consultation-img {
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+}
+
+.booking-card-content {
+  padding: 24px 20px;
+  text-align: center;
+}
+
+.booking-card-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.booking-card-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.btn-checkout {
+  display: block;
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 1rem;
+  font-weight: 800;
+  text-align: center;
+  box-shadow: 0 8px 24px var(--accent-soft);
+}
+
+.btn-checkout:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px var(--accent-soft);
+}
+
+/* --- Custom Toast Notification Popup --- */
+.toast-popup {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-card);
+  padding: 14px 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  overflow: hidden;
+  min-width: 280px;
+}
+
+.toast-popup.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.toast-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toast-icon {
+  background: var(--accent-soft);
+  color: var(--accent-purple);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+.toast-message {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.toast-progress {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 3px;
+  width: 100%;
+  background: var(--accent-purple);
+  transform-origin: right;
+  transform: scaleX(0);
+}
+
+.toast-popup.show .toast-progress {
+  animation: toastTimer 3s linear forwards;
+}
+
+@keyframes toastTimer {
+  0% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
+
+/* --- Floating Pill Footer --- */
+.site-footer {
+  margin-top: 80px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.footer-pill {
+  max-width: 400px;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 24px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-card);
+}
+
+.footer-logo {
+  font-weight: 800;
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: var(--text-main);
+}
+
+.footer-pill-links {
+  display: flex;
+  gap: 18px;
+}
+
+.footer-pill-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.footer-pill-links a:hover {
+  color: var(--accent-purple);
+}
+
+.footer-disclaimers {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  line-height: 1.6;
+}
+
+.footer-disclaimers a {
+  color: var(--text-muted);
+  text-decoration: underline;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 860px) {
+  .consultation-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .consultation-info {
+    order: 1;
+  }
+
+  .consultation-booking {
+    order: 2;
+    width: 100%;
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .toast-popup {
+    right: 15px;
+    left: 15px;
+    min-width: auto;
+  }
+}
