@@ -1,5 +1,3 @@
-
-
 * ,
 *::before,
 *::after { 
@@ -13,14 +11,14 @@
    ========================================================= */
 :root {
   /* Softer Slate Dark Palette (Default: 6 PM to 9 AM) */
-  --bg-color: #22242B;
-  --card-bg: #2C2E38;
-  --card-hover: #353844;
-
   --accent: #8B80F0;
   --accent-hover: #786CD8;
   --accent-light: rgba(139, 128, 240, 0.15);
 
+  --bg-color: #22242B;
+  --card-bg: #2C2E38;
+  --card-hover: #353844;
+   --brand-purple: #8B80F0;
   --text-main: #F8FAFC;
   --text-muted: #CBD5E1;
 
@@ -35,13 +33,13 @@
 
 /* Clean Light Theme Override (Active: 9 AM to 6 PM) */
 body.light-theme {
-  --bg-color: #F9FAFB;
-  --card-bg: #FFFFFF;
-  --card-hover: #F3F4F6;
-
   --accent: #524AB5;
   --accent-hover: #413a96;
   --accent-light: rgba(82, 74, 181, 0.1);
+
+  --bg-color: #F9FAFB;
+  --card-bg: #FFFFFF;
+  --card-hover: #F3F4F6;
 
   --text-main: #111827;
   --text-muted: #4B5563;
@@ -55,14 +53,15 @@ html {
 
 body {
   font-family: 'Cairo', sans-serif;
-  background-color: var(--bg-color) !important;
-  color: var(--text-main) !important;
+  background: var(--bg-color);
+  color: var(--text-main);
   font-size: 14.5px;
   line-height: 1.55;
   overflow-x: hidden; 
   margin: 0;
   transition: background-color 0.25s ease, color 0.25s ease;
 }
+.highlight { color: var(--brand-purple); }
 
 /* =========================================================
    STRICT MAX-WIDTH SYSTEM FRAME (Locked to 750px Frame Width)
@@ -94,7 +93,6 @@ h2 {
   letter-spacing: -0.01em; 
   margin-bottom: 16px; 
   text-align: center; 
-  color: var(--text-main);
 }
 h2 em { font-style: normal; color: var(--accent); }
 
@@ -150,26 +148,26 @@ h2 em { font-style: normal; color: var(--accent); }
   color: var(--text-main);
   margin: 0 auto 20px;
 }
-.audience-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(139, 128, 240, 0.08); 
-  border: 1px solid rgba(139, 128, 240, 0.2); 
-  padding: 6px 16px;
-  border-radius: 100px;
+.header-box { text-align: center; margin-bottom: 28px; }
+    .header-box h1 {
+      font-size: clamp(22px, 4.5vw, 34px);
+      font-weight: 900;
+      line-height: 1.38;
+      color: var(--text-main);
+      margin-bottom: 16px;
+    }
+    .header-box h1 .highlight { color: var(--brand-purple); }
+
+  .sub-description {
+  font-size: 15px;
+  color: var(--text-muted);
+  font-weight: 500;
+  line-height: 1.65;
+  max-width: 620px;
+  margin: 0 auto;
   margin-bottom: 20px;
 }
-.badge-text { font-size: 12px; font-weight: 800; color: var(--accent); }
-.pulse-dot { width: 7px; height: 7px; background-color: #EF4444; border-radius: 50%; position: relative; }
-.pulse-dot::after {
-  content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 50%; background-color: #EF4444;
-  animation: live-pulse 1.8s infinite ease-in-out;
-}
-@keyframes live-pulse {
-  0% { transform: scale(1); opacity: 0.8; }
-  100% { transform: scale(3.5); opacity: 0; }
-}
+    }
 
 /* =========================================================
    2. OTM PROCESS SECTION
@@ -188,8 +186,8 @@ h2 em { font-style: normal; color: var(--accent); }
   width: 100%;
 }
 .otm-card {
-  background-color: var(--card-bg) !important;
-  border: 1px solid var(--border-color) !important;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
   border-radius: 16px;
   padding: 20px 16px;
   display: flex;
@@ -241,8 +239,8 @@ h2 em { font-style: normal; color: var(--accent); }
 .chart-canvas { width: 100%; height: 35px; }
 
 .step-badge { width: 26px; height: 26px; background-color: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-main); font-size: 12px; font-weight: 800; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
-.otm-card h3 { font-size: 16px; font-weight: 800; color: var(--text-main) !important; margin-bottom: 8px; line-height: 1.4; }
-.otm-card p { font-size: 13px; line-height: 1.6; color: var(--text-muted) !important; text-align: justify; }
+.otm-card h3 { font-size: 16px; font-weight: 800; color: var(--text-main); margin-bottom: 8px; line-height: 1.4; }
+.otm-card p { font-size: 13px; line-height: 1.6; color: var(--text-muted); text-align: justify; }
 
 @keyframes pulse-ring {
   0%, 100% { transform: scale(1); opacity: 1; }
@@ -337,15 +335,15 @@ h2 em { font-style: normal; color: var(--accent); }
    4. ABOUT BARI
    ========================================================= */
 .about-wrapper { padding: 40px 0; }
-.about-container { background: var(--card-bg) !important; border: 1px solid var(--border-color) !important; border-radius: 16px; padding: 24px; width: 100%; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.about-container { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; width: 100%; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
 .founder-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
 .founder-img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-light); padding: 3px; }
 .about-content { text-align: right; width: 100%; }
-.about-content p { font-size: 15px; color: var(--text-muted) !important; margin-bottom: 16px; line-height: 1.7; font-weight: 500;}
-.about-content p strong { color: var(--text-main) !important; font-weight: 800; }
+.about-content p { font-size: 15px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.7; font-weight: 500;}
+.about-content p strong { color: var(--text-main); font-weight: 800; }
 
 .trust-stats { display: flex; flex-direction: row; gap: 12px; width: 100%; margin-top: 24px; }
-.stat-box { flex: 1; background: var(--bg-color) !important; padding: 16px 8px; border-radius: 10px; border: 1px solid var(--border-color) !important; text-align: center; }
+.stat-box { flex: 1; background: var(--bg-color); padding: 16px 8px; border-radius: 10px; border: 1px solid var(--border-color); text-align: center; }
 .stat-num { font-size: 22px; font-weight: 900; color: var(--accent); margin-bottom: 2px; display: block; }
 .stat-label { font-size: 12px; color: var(--text-muted); font-weight: 700; }
 
@@ -353,17 +351,17 @@ h2 em { font-style: normal; color: var(--accent); }
    5. FAQ SECTION
    ========================================================= */
 .faq-container { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; width: 100%; }
-.faq-item { background: var(--card-bg) !important; border: 1px solid var(--border-color) !important; border-radius: 10px; overflow: hidden; }
-.faq-item[open] { border-color: var(--accent) !important; }
-.faq-item summary { padding: 16px 20px; font-size: 15px; font-weight: 800; color: var(--text-main) !important; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; list-style: none; }
+.faq-item { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; overflow: hidden; }
+.faq-item[open] { border-color: var(--accent); }
+.faq-item summary { padding: 16px 20px; font-size: 15px; font-weight: 800; color: var(--text-main); cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; list-style: none; }
 .faq-item summary::after { content: '←'; font-size: 16px; color: var(--accent); transition: transform 0.3s ease; }
 .faq-item[open] summary::after { transform: rotate(-90deg); }
 .faq-item summary::-webkit-details-marker { display: none; }
-.faq-answer { padding: 0 20px 16px; font-size: 14px; color: var(--text-muted) !important; line-height: 1.6; font-weight: 600; }
-.faq-item[open] .faq-answer { border-top: 1px solid var(--border-color) !important; padding-top: 12px; }
+.faq-answer { padding: 0 20px 16px; font-size: 14px; color: var(--text-muted); line-height: 1.6; font-weight: 600; }
+.faq-item[open] .faq-answer { border-top: 1px solid var(--border-color); padding-top: 12px; }
 
 /* =========================================================
-   6. MULTI-STEP FORM (PERMANENTLY LOCKED TO SOLID PURPLE #524BB5)
+   6. MULTI-STEP FORM (LOCKED TO PERMANENT #524bb5 PURPLE)
    ========================================================= */
 .gradient-master-container {
   position: relative;
@@ -416,7 +414,7 @@ h2 em { font-style: normal; color: var(--accent); }
   transition: width 0.4s ease; 
 }
 
-/* Step hiding / displaying rules */
+/* Form Steps Layout & JS Toggle Fix */
 .form-steps-body { 
   flex-grow: 1; 
   display: flex; 
@@ -447,7 +445,7 @@ h2 em { font-style: normal; color: var(--accent); }
   line-height: 1.5; 
 }
 
-/* Inputs & Textareas */
+/* Input Fields inside Purple Form */
 .form-step input[type="text"], 
 .form-step input[type="tel"], 
 .form-step input[type="url"], 
@@ -465,6 +463,7 @@ h2 em { font-style: normal; color: var(--accent); }
   font-family: 'Cairo', sans-serif;
 }
 
+/* Readable Select Dropdown Options */
 .form-step select option {
   color: #111827 !important;
   background-color: #FFFFFF !important;
@@ -476,12 +475,33 @@ h2 em { font-style: normal; color: var(--accent); }
 }
 
 /* Radio Buttons */
-.radio-group { display: flex; flex-direction: column; gap: 10px; }
-.radio-label { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 14px !important; color: #FFFFFF !important; }
-.radio-label input { accent-color: #FFFFFF !important; width: 16px; height: 16px; }
+.radio-group { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 10px; 
+}
+.radio-label { 
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
+  cursor: pointer; 
+  font-size: 14px !important; 
+  color: #FFFFFF !important; 
+}
+.radio-label input { 
+  accent-color: #FFFFFF !important; 
+  width: 16px; 
+  height: 16px; 
+}
 
-/* Buttons inside form */
-.form-navigation { display: flex; justify-content: flex-start; gap: 10px; margin-top: auto; padding-top: 20px; }
+/* Navigation Buttons */
+.form-navigation { 
+  display: flex; 
+  justify-content: flex-start; 
+  gap: 10px; 
+  margin-top: auto; 
+  padding-top: 20px; 
+}
 
 .btn-next, 
 .btn-submit-form { 
@@ -510,17 +530,18 @@ h2 em { font-style: normal; color: var(--accent); }
 .brand-statement h2 { font-family: 'Georgia', serif; font-style: italic; font-weight: 500; font-size: 22px; color: var(--text-main); }
 
 /* =========================================================
-   FOOTER & MAILTO LINK FIX
+   FOOTER & MAILTO CONTRAST FIX
    ========================================================= */
 footer { position: relative; z-index: 3; padding-bottom: 40px; width: 100%; text-align: center; } 
 .footer-pill {
   max-width: 450px; margin: 0 auto 20px; display: flex; justify-content: center; align-items: center; gap: 20px; padding: 10px 20px; border-radius: 100px;
-  background: var(--card-bg) !important; border: 1px solid var(--border-color) !important; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  background: var(--card-bg); border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 .footer-pill-links { display: flex; gap: 20px; align-items: center; }
-.footer-pill-links a { color: var(--text-muted) !important; text-decoration: none; font-size: 13px; font-weight: 600; }
-.footer-disclaimers { width: 100%; font-size: 11.5px; color: var(--text-muted) !important; line-height: 1.6; }
+.footer-pill-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 600; }
+.footer-disclaimers { width: 100%; font-size: 11.5px; color: var(--text-muted); line-height: 1.6; }
 .footer-disclaimers p { margin-bottom: 6px; }
+.footer-disclaimers a { color: var(--text-muted); text-decoration: underline; }
 
 /* Pure White Highlighted Mailto Link Fix */
 .footer-disclaimers a[href^="mailto:"] {
@@ -561,4 +582,3 @@ footer { position: relative; z-index: 3; padding-bottom: 40px; width: 100%; text
   .footer-pill-links { gap: 12px; }
   .step-form-container { padding: 16px; }
 }
-
