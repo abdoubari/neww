@@ -4,26 +4,27 @@
    DESIGN TOKENS
    ============================================ */
 :root {
-    --bg: #faf9f5;
-    --bg-glow: radial-gradient(circle at 85% -10%, rgba(82,74,181,0.08), transparent 55%),
-               radial-gradient(circle at -10% 110%, rgba(82,74,181,0.06), transparent 50%);
+    /* DEFAULT DARK THEME (6 PM to 9 AM) */
+    --bg: #22242B;
+    --bg-glow: radial-gradient(circle at 85% -10%, rgba(139,128,240,0.08), transparent 55%),
+               radial-gradient(circle at -10% 110%, rgba(139,128,240,0.06), transparent 50%);
 
-    --surface: #ffffff;
-    --surface-2: #f4f2ec;
-    --surface-3: #ebe8e0;
+    --surface: #2C2E38;
+    --surface-2: #353844;
+    --surface-3: #3F4352;
 
-    --border: rgba(20,18,30,0.09);
-    --border-strong: rgba(20,18,30,0.16);
+    --border: #3D4150;
+    --border-strong: #4A4F62;
 
-    --text: #1a1924;
-    --text-dim: #6b6875;
-    --text-faint: #9c98a8;
+    --text: #F8FAFC;
+    --text-dim: #CBD5E1;
+    --text-faint: #94A3B8;
 
-    --accent: #524ab5;
-    --accent-deep: #443c9e;
-    --accent-strong: #6357d6;
-    --accent-soft: rgba(82,74,181,0.08);
-    --accent-border: rgba(82,74,181,0.35);
+    --accent: #8B80F0;
+    --accent-deep: #786CD8;
+    --accent-strong: #9990F2;
+    --accent-soft: rgba(139,128,240,0.12);
+    --accent-border: rgba(139,128,240,0.35);
 
     --amber: #b3740f;
     --amber-soft: rgba(179,116,15,0.1);
@@ -45,8 +46,38 @@
     --radius-lg: 22px;
     --radius-pill: 999px;
 
-    --shadow-card: 0 10px 28px rgba(20,18,30,0.06);
-    --shadow-pop: 0 20px 48px rgba(20,18,30,0.14);
+    --shadow-card: 0 10px 28px rgba(0,0,0,0.2);
+    --shadow-pop: 0 20px 48px rgba(0,0,0,0.35);
+}
+
+/* LIGHT THEME OVERRIDE (9 AM to 6 PM) */
+body.light-theme {
+    --bg: #faf9f5;
+    --bg-glow: radial-gradient(circle at 85% -10%, rgba(82,74,181,0.08), transparent 55%),
+               radial-gradient(circle at -10% 110%, rgba(82,74,181,0.06), transparent 50%);
+
+    --surface: #ffffff;
+    --surface-2: #f4f2ec;
+    --surface-3: #ebe8e0;
+
+    --border: rgba(20,18,30,0.09);
+    --border-strong: rgba(20,18,30,0.16);
+
+    --text: #1a1924;
+    --text-dim: #6b6875;
+    --text-faint: #9c98a8;
+
+    --accent: #524ab5;
+    --accent-deep: #443c9e;
+    --accent-strong: #6357d6;
+    --accent-soft: rgba(82,74,181,0.08);
+    --accent-border: rgba(82,74,181,0.35);
+
+    --primary: #524bb5;
+    --primary-dark: #3f3994;
+    --primary-light: rgba(82, 75, 181, 0.06);
+    --background: #FAFAFC;
+    --text-secondary: #6B7280;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -59,7 +90,7 @@ html, body {
 body {
     background: var(--bg-glow), var(--bg);
     color: var(--text);
-      font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo', sans-serif;
     display: flex;
     flex-direction: column; /* 💡 Stack container and footer vertically */
     justify-content: flex-start; /* 💡 Allows content to start from top and flow down */
@@ -67,6 +98,7 @@ body {
     padding: 1rem 1.5rem;
     direction: rtl;
     -webkit-font-smoothing: antialiased;
+    transition: background-color 0.25s ease, color 0.25s ease;
 }
 ::selection { background: var(--accent-soft); color: var(--text); }
 
@@ -137,7 +169,7 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-//* ============================================
+/* ============================================
    HEADER & PULSING RED DOT
    ============================================ */
 .badge-container { margin-bottom: 2rem; display: flex; justify-content: center; }
@@ -219,7 +251,7 @@ body {
 h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
 .section-desc { font-size: 0.95rem; line-height: 1.6; color: var(--text-dim); margin-bottom: 2rem; }
 .meta-tip {
-      font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo', sans-serif;
     font-size: 0.68rem;
     font-weight: 500;
     letter-spacing: 0.03em;
@@ -237,7 +269,7 @@ h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom
     margin-bottom: 0.9rem;
 }
 #step-counter {
-      font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo', sans-serif;
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.06em;
@@ -251,7 +283,7 @@ h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom
     font-weight: 700;
     cursor: pointer;
     font-size: 0.8rem;
-      font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo', sans-serif;
     transition: color 0.15s ease;
 }
 .nav-link:hover { color: var(--text); }
@@ -273,7 +305,7 @@ h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom
    ============================================ */
 .input-wrapper input, .input-wrapper textarea {
     width: 100%;
-      font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo', sans-serif;
     font-size: 1rem;
     padding: 1.15rem 1.4rem;
     background-color: var(--surface);
@@ -353,7 +385,7 @@ h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom
    ============================================ */
 .action-footer { display: flex; justify-content: center; margin-top: 1rem; }
 button#next-btn, button#generate {
-      font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo', sans-serif;
     font-weight: 700;
     font-size: 0.92rem;
     padding: 1.05rem 2.75rem;
@@ -411,7 +443,7 @@ button#generate:disabled { opacity: 0.6; cursor: default; transform: none; }
 }
 .modal-meta {
     display: block;
-      font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo', sans-serif;
     font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -428,7 +460,6 @@ button#generate:disabled { opacity: 0.6; cursor: default; transform: none; }
 }
 
 .modal-body-block { 
-  /* Fixed the broken top padding 'rem' to '0.5rem' to reduce the space */
   padding: 0.5rem 2.25rem 2.25rem; 
 }
 
@@ -439,7 +470,7 @@ button#generate:disabled { opacity: 0.6; cursor: default; transform: none; }
   margin-bottom: 1.15rem; 
 }button#close-modal-btn {
     width: 100%;
-      font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo', sans-serif;
     background: linear-gradient(135deg, var(--accent-deep), var(--accent-strong));
     color: #ffffff;
     border: none;
@@ -487,7 +518,7 @@ button#close-modal-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 2
 }
 .action-icon-btn {
     cursor: pointer;
-      font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo', sans-serif;
     font-weight: 700;
     font-size: 0.82rem;
     padding: 0.65rem 1.1rem;
@@ -510,7 +541,7 @@ button#close-modal-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 2
    RESULTS — TITLE BLOCK
    ============================================ */
 .concept-eyebrow {
-      font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo', sans-serif;
     font-size: 0.72rem;
     text-transform: uppercase;
     color: var(--accent);
@@ -575,10 +606,9 @@ button#close-modal-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 2
     z-index: 1;
 }
 
-/* تعديل تموضع الـ Hook ليرتفع للأعلى تماماً مثل الصورة المرجعية */
 .phone-hook-wrapper{
     position: absolute;
-    top: 28%; /* رفع النص للأعلى ليصبح فوق زر التشغيل */
+    top: 28%;
     left: 15px;
     right: 15px;
     transform: translateY(-50%);
@@ -594,11 +624,10 @@ button#close-modal-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 2
     text-align: center;
 }
 
-/* رفع الكلام المنطوق قليلاً لترك مساحة أمان سفلية مثل الصورة المرجعية */
 .phone-bottom-meta { 
     margin-top: auto; 
     width: 100%;
-    margin-bottom: 0.8rem; /* إضافة مسافة أمان سفلية للكابشن */
+    margin-bottom: 0.8rem;
     z-index: 2;
 }
 .phone-caption {
@@ -619,7 +648,7 @@ button#close-modal-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 2
     display: flex;
     justify-content: space-between;
     margin-top: 0.6rem;
-      font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo', sans-serif;
     font-size: 0.7rem;
     color: var(--text-faint);
     max-width: 245px;
@@ -638,7 +667,7 @@ button#close-modal-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 2
 }
 .hook-row:last-child { margin-bottom: 0; border-inline-end-color: var(--accent-border); }
 .hook-row label {
-      font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo', sans-serif;
     font-size: 0.65rem;
     color: var(--text-faint);
     display: block;
@@ -664,7 +693,7 @@ button#close-modal-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 2
 .script-step-row .step-body-text { font-size: 0.95rem; line-height: 1.6; color: var(--text); flex: 1; }
 
 .step-tag {
-      font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo', sans-serif;
     font-size: 0.78rem;
     font-weight: 700;
     padding: 0.4rem 0.75rem;
@@ -708,33 +737,21 @@ button#close-modal-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 2
     .mockup-column { order: 2; }
 }
 
-
-
-
-
-
-
-
-
-
-
         :root {
-            --primary: #524bb5;
-            --primary-dark: #3f3994;
-            --primary-light: rgba(82, 75, 181, 0.06);
-            --background: #FAFAFC;
-            --surface: #FFFFFF;
-            --text: #16161D;
-            --text-secondary: #6B7280;
-            --border: #ECECF3;
+            --primary: var(--accent);
+            --primary-dark: var(--accent-deep);
+            --primary-light: var(--accent-soft);
+            --background: var(--bg);
+            --text-secondary: var(--text-dim);
+            --border-color: var(--border);
             --radius-lg: 28px;
             --radius-md: 18px;
             --radius-sm: 16px;
             --radius-pill: 100px;
             --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            --shadow-subtle: 0 2px 8px rgba(22, 22, 29, 0.02), 0 4px 20px rgba(22, 22, 29, 0.03);
-            --shadow-premium: 0 12px 40px rgba(82, 75, 181, 0.05), 0 2px 12px rgba(82, 75, 181, 0.02);
-            --glow-focus: 0 0 0 4px rgba(82, 75, 181, 0.15);
+            --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.08), 0 4px 20px rgba(0, 0, 0, 0.05);
+            --shadow-premium: 0 12px 40px rgba(0, 0, 0, 0.15);
+            --glow-focus: 0 0 0 4px var(--accent-soft);
         }
 
         html, body {
@@ -765,7 +782,7 @@ button#close-modal-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 2
             width: 100%;
             max-width: 1200px;
             height: 600px;
-            background: radial-gradient(circle, rgba(82, 75, 181, 0.05) 0%, rgba(250, 250, 252, 0) 70%);
+            background: radial-gradient(circle, rgba(139, 128, 240, 0.05) 0%, transparent 70%);
             z-index: -1;
             pointer-events: none;
         }
@@ -806,7 +823,7 @@ button#close-modal-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 2
     font-size: 0.75rem;
     font-weight: 600;
     color: #FFFFFF;
-    box-shadow: 0 8px 20px rgba(82, 75, 181, 0.25);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
         .pulse-dot {
             width: 7px;
@@ -862,7 +879,7 @@ button#close-modal-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 2
    ============================================ */
 .main-header .badge-free {
     font-size: 0.75em;
-    background: var(--emerald); /* استخدام المتغير الأخضر المتاح في القالب[cite: 2] */
+    background: var(--emerald); /* استخدام المتغير الأخضر المتاح في القالب */
     color: #ffffff;
     padding: 0.25rem 0.85rem;
     border-radius: var(--radius-pill);
@@ -870,7 +887,7 @@ button#close-modal-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 2
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    box-shadow: 0 4px 12px var(--emerald-soft); /*[cite: 2] */
+    box-shadow: 0 4px 12px var(--emerald-soft);
     line-height: 1;
     height: fit-content;
 }
@@ -1055,7 +1072,7 @@ button#close-modal-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 2
     border-radius: var(--radius-md);
     font-size: 0.95rem;
     font-weight: 700;
-    color: #9498A5;
+    color: var(--text-dim);
     cursor: pointer;
     transition: var(--transition);
 }
@@ -1070,7 +1087,7 @@ button#close-modal-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 2
             background: var(--primary) !important;
             border-color: var(--primary) !important;
             color: #FFFFFF !important;
-            box-shadow: 0 10px 25px rgba(82, 75, 181, 0.3) !important;
+            box-shadow: 0 10px 25px rgba(139, 128, 240, 0.3) !important;
         }
        
         /* شبكة خيارات البطاقات (الخطوتان 2 و 3) بشكل كبسولي مستدير */
@@ -1107,12 +1124,12 @@ button#close-modal-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 2
         .card-option:hover {
             transform: translateY(-2px);
             border-color: var(--primary);
-            box-shadow: 0 10px 25px rgba(82, 75, 181, 0.08);
+            box-shadow: 0 10px 25px rgba(139, 128, 240, 0.08);
         }
         .card-option.selected {
             background: var(--primary) !important;
             border-color: var(--primary) !important;
-            box-shadow: 0 10px 25px rgba(82, 75, 181, 0.3) !important;
+            box-shadow: 0 10px 25px rgba(139, 128, 240, 0.3) !important;
         }
         .card-option.selected h3,
         .card-option.selected p {
@@ -1138,16 +1155,16 @@ button#close-modal-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 2
         #next-btn, #generate {
             background: var(--primary);
             color: #FFFFFF;
-            box-shadow: 0 8px 20px rgba(82, 75, 181, 0.3);
+            box-shadow: 0 8px 20px rgba(139, 128, 240, 0.3);
         }
         #next-btn:hover:not(.disabled), #generate:hover {
             background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(82, 75, 181, 0.4);
+            box-shadow: 0 10px 25px rgba(139, 128, 240, 0.4);
         }
         #next-btn.disabled {
             background: var(--border);
-            color: #a1a1aa;
+            color: var(--text-faint);
             cursor: not-allowed;
             box-shadow: none;
             opacity: 0.7;
@@ -1156,7 +1173,7 @@ button#close-modal-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 2
 
         /* الـ Modal */
         .modal-overlay {
-            background: rgba(22, 22, 29, 0.5);
+            background: rgba(0, 0, 0, 0.65);
             backdrop-filter: blur(8px);
             position: fixed !important;
             inset: 0;
@@ -1183,12 +1200,12 @@ button#close-modal-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 2
 .modal-body-block p { 
     font-size: 0.95rem; 
     line-height: 1.65; 
-    color: #374151; /* 💡 Darker gray color (#374151 instead of var(--text-dim)) for excellent readability */
+    color: var(--text-dim); 
     margin-bottom: 1.15rem; 
 }
         .modal-meta {
             font-size: 0.85rem;
-            color: var(--primary);
+            color: #ffffff;
             font-weight: 700;
         }
         .modal-card h2 {
@@ -1211,7 +1228,7 @@ button#close-modal-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 2
             cursor: pointer;
             transition: var(--transition);
             margin-top: 1rem;
-            box-shadow: 0 8px 20px rgba(82, 75, 181, 0.3);
+            box-shadow: 0 8px 20px rgba(139, 128, 240, 0.3);
         }
         #close-modal-btn:hover {
             background: var(--primary-dark);
@@ -1239,24 +1256,22 @@ button#close-modal-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 2
   gap: 24px;
   padding: 12px 24px;
   border-radius: 100px;
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(30px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
 }
 .footer-pill-links { display: flex; gap: 30px; align-items: center; }
  
 .footer-pill-links a {
-  color: var(--text-muted);
+  color: var(--text-dim);
   text-decoration: none;
   font-size: 14px; 
   font-weight: 600;
   transition: color 0.2s ease;
 }
 .footer-pill-links a:hover {
-  color: var(--text-main);
+  color: var(--text);
 }
 
 .brand-statement { text-align: center; margin: 0px auto 20px; }
-.brand-statement h2 { font-family: 'Georgia', serif; font-style: italic; font-weight: 500; font-size: clamp(20px, 3vw, 26px); color: #111; line-height: 1.2; }
-
+.brand-statement h2 { font-family: 'Georgia', serif; font-style: italic; font-weight: 500; font-size: clamp(20px, 3vw, 26px); color: var(--text); line-height: 1.2; }
