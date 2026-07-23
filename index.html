@@ -18,7 +18,7 @@
       --brand-purple-hover: #413A96;
       --brand-purple-light: rgba(82, 74, 181, 0.08);
       --text-dark: #111827;
-      --text-muted: #4B5563;
+      --text-muted: #7d72d8;
       --border-light: #E5E7EB;
       --card-bg-light: #F9FAFB;
     }
@@ -40,13 +40,13 @@
       margin: 0 auto;
     }
 
-    /* --- BRANDING TOP HEADER (Matches Image Hierarchy) --- */
+    /* --- BRANDING TOP HEADER --- */
     .brand-header {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 16px;
-      margin-bottom: 28px;
+      margin-bottom: 20px;
     }
     .brand-logo-item {
       display: flex;
@@ -63,42 +63,52 @@
       color: var(--text-dark);
       letter-spacing: 0.05em;
     }
-    .brand-divider {
-      width: 1px;
-      height: 24px;
-      background-color: var(--border-light);
+
+    /* --- MINIMAL TEXT NAVIGATION MENU --- */
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin-bottom: 32px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .top-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+    .top-nav a:hover {
+      color: var(--brand-purple);
+    }
+    .top-nav .nav-sep {
+      color: var(--border-light);
+      font-size: 12px;
     }
 
     /* --- HERO HEADLINE STRUCTURE --- */
     .header-box { text-align: center; margin-bottom: 28px; }
     
-    /* Main serif-accentuated Headline */
     .header-box h1 {
-      font-size: clamp(24px, 4.8vw, 36px);
+      font-size: clamp(22px, 4.5vw, 34px);
       font-weight: 900;
-      line-height: 1.35;
+      line-height: 1.38;
       color: var(--text-dark);
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
     .header-box h1 .highlight {
       color: var(--brand-purple);
     }
-    
-    /* Sub-headline bar */
-    .sub-headline {
-      font-size: clamp(14px, 3.2vw, 17px);
-      font-weight: 800;
-      color: var(--brand-purple);
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-      margin-bottom: 12px;
-    }
 
     .sub-description {
       font-size: 15px;
-      color: var(--text-muted);
+      color: #4B5563;
       font-weight: 500;
-      max-width: 580px;
+      line-height: 1.65;
+      max-width: 620px;
       margin: 0 auto;
     }
 
@@ -125,35 +135,6 @@
       background: var(--brand-purple-hover);
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(82, 74, 181, 0.35);
-    }
-
-    /* --- TRUST PROOF BADGE (BELOW CTA) --- */
-    .trust-badge-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 14px;
-    }
-    .avatar-stack {
-      display: flex;
-      align-items: center;
-    }
-    .avatar-stack img {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      border: 2px solid #FFFFFF;
-      margin-left: -8px;
-      object-fit: cover;
-    }
-    .avatar-stack img:last-child {
-      margin-left: 0;
-    }
-    .trust-badge-text {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--text-muted);
     }
 
     /* --- TESTIMONIAL IMAGE PLACEHOLDER --- */
@@ -232,7 +213,18 @@
       color: var(--brand-purple);
       font-weight: 900;
     }
+/* Fix direction for Email and WhatsApp inputs */
+#email, 
+#whatsapp {
+  direction: ltr !important;
+  text-align: left !important;
+}
 
+/* Optional: Add placeholder text-alignment fix if needed */
+#email::placeholder,
+#whatsapp::placeholder {
+  text-align: left !important;
+}
     /* --- FOOTER --- */
     footer { margin-top: 50px; text-align: center; width: 100%; }
     .footer-pill {
@@ -327,36 +319,30 @@
 <body>
 
   <div class="container">
-    <!-- STRUCTURED LOGO BRAND HEADER -->
-    <div class="brand-header">
+    <!-- CLEAN MINIMAL TEXT NAVIGATION MENU -->
+    <nav class="top-nav">
       <div class="brand-logo-item">
-        <img src="main-logo.svg" alt="OTM System Logo" onerror="this.src='main-logo.png'">
-     
+        <img src="main-logo.svg" alt="OTM System Logo">
       </div>
-      <div class="brand-divider"></div>
-     
-    </div>
+      <a href="https://blog.bariabder.com/">My Blog</a>
+      <span class="nav-sep">•</span>
+      <a href="https://bariabder.com/idea">أداة توليد الأفكار "مجانية"</a>
+    </nav>
 
     <!-- HERO HEADLINE STRUCTURE -->
     <div class="header-box">
       <h1>
-        كيفاش كنحولوا البراند الشخصي إلى
-        <br>
-        مصدر كيجيب <span class="highlight">Clients</span> بشكل مستمر بدون إعلانات
+        النظام بالضبط اللي كنستعملوه باش نحوّلو خبرتك لـ <span class="highlight">براند شخصية كاتبيع ليك</span>، بلا ما تعتمد على الإعلانات.
       </h1>
-      <div class="sub-headline">
-        باستخدام نظام OTM SYSTEM™ الموجه للمؤسسين والخبراء
-      </div>
       <p class="sub-description">
-        وكيفاش غادي نعاونوك تبني هاد النظام في مشروعك باش تقدر تجيب عملاء مهتمين ومستعدين للشراء كل أسبوع.
+        إلى كنت أصلاً متميز فالمجال ديالك، ولكن كتعاني تجيب Clients بشكل مستمر، إكتشف كيفاش <strong>OTM System™</strong> كيساعد الخبراء ورواد الأعمال يولو هما الاختيار الأول فالـمجال ديالهم.
       </p>
 
       <!-- MAIN CTA 1 -->
       <button class="btn-cta" onclick="openModal()">
-        شاهد الفيديو الشارح الآن ←
+        شاهد الفيديو الآن ←
       </button>
-
-    
+    </div>
 
     <!-- LARGE TESTIMONIAL IMAGE PLACEHOLDER -->
     <div class="testimonial-placeholder-wrapper">
@@ -389,7 +375,7 @@
 
     <!-- MAIN CTA 2 -->
     <button class="btn-cta" onclick="openModal()">
-      شاهد الفيديو الشارح الآن ←
+      شاهد الفيديو الآن ←
     </button>
 
     <!-- FLOATING PILL FOOTER -->
@@ -409,39 +395,39 @@
   </div>
 
   <!-- POPUP FORM MODAL -->
-  <div class="modal-overlay" id="leadModal">
-    <div class="modal-card">
-      <button class="close-btn" onclick="closeModal()">&times;</button>
-      <h2>أدخل معلوماتك لمشاهدة الفيديو ✍️</h2>
-      
-      <form id="leadForm">
-        <div class="form-group">
-          <label for="fullName">الإسم الكامل | Full Name</label>
-          <input type="text" id="fullName" name="fullName" placeholder="أدخل اسمك الكامل..." required>
-        </div>
+<div class="modal-overlay" id="leadModal">
+  <div class="modal-card">
+    <button class="close-btn" onclick="closeModal()">&times;</button>
+    <h2>أدخل معلوماتك لمشاهدة الفيديو ✍️</h2>
+    
+    <form id="leadForm">
+      <div class="form-group">
+        <label for="fullName">الإسم الكامل | Full Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="أدخل اسمك الكامل..." required>
+      </div>
 
-        <div class="form-group">
-          <label for="email">البريد الإلكتروني | Email</label>
-          <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
-        </div>
+      <div class="form-group">
+        <label for="email">البريد الإلكتروني | Email</label>
+        <input type="text" id="email" name="email" placeholder="example@gmail.com">
+      </div>
 
-        <div class="form-group">
-          <label for="whatsapp">رقم الواتساب | WhatsApp Number</label>
-          <input type="tel" id="whatsapp" name="whatsapp" placeholder="+212 600-000000" required>
-        </div>
+      <div class="form-group">
+        <label for="whatsapp">رقم الواتساب | WhatsApp Number</label>
+        <input type="text" id="whatsapp" name="whatsapp" placeholder="+212 666666666">
+      </div>
 
-        <button type="submit" class="btn-cta" style="margin-top: 10px;">
-          شاهد الفيديو الآن
-        </button>
+      <button type="submit" class="btn-cta" style="margin-top: 10px;">
+        شاهد الفيديو الآن
+      </button>
 
-        <p class="modal-disclaimer">
-          بإدخال معلوماتك، فإنك توافق على استقبال التحديثات والمحتوى الخاص بنظام OTM System™. يمكنك إلغاء الاشتراك في أي وقت.
-        </p>
-      </form>
-    </div>
+      <p class="modal-disclaimer">
+        بإدخال معلوماتك، فإنك توافق على استقبال التحديثات والمحتوى الخاص بنظام OTM System™. يمكنك إلغاء الاشتراك في أي وقت.
+      </p>
+    </form>
   </div>
+</div>
 
- <script>
+  <script>
   const modal = document.getElementById('leadModal');
   const form = document.getElementById('leadForm');
 
@@ -467,16 +453,14 @@
     submitBtn.disabled = true;
     submitBtn.innerText = 'جاري التحويل...';
 
-    // Encode form fields into URL parameters for Google Apps Script execution
     const searchParams = new URLSearchParams(new FormData(form));
 
     fetch(scriptURL, {
       method: 'POST',
-      mode: 'no-cors', // Prevents browser CORS blocks on Google Apps Script endpoints
+      mode: 'no-cors',
       body: searchParams
     })
     .then(() => {
-      // Redirect user directly to the explainer page
       window.location.href = 'https://www.bariabder.com/explainer';
     })
     .catch(error => {
