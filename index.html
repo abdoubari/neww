@@ -9,275 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    :root {
-      /* Soft Slate-Gray Dark Palette (Default for 6 PM - 9 AM) */
-      --bg-color: #22242B;
-      --card-bg: #2C2E38;
-      --card-hover: #353844;
-      
-      --brand-purple: #8B80F0;
-      --brand-purple-hover: #786CD8;
-      --brand-purple-light: rgba(139, 128, 240, 0.15);
 
-      --text-main: #F8FAFC;
-      --text-muted: #CBD5E1;
-      --border-light: #3D4150;
-    }
-
-    body.light-theme {
-      /* Clean Light Palette (Default for 9 AM - 6 PM) */
-      --bg-color: #FFFFFF;
-      --card-bg: #F9FAFB;
-      --card-hover: #F3F4F6;
-
-      --brand-purple: #524AB5;
-      --brand-purple-hover: #413A96;
-
-      --text-main: #111827;
-      --text-muted: #4B5563;
-      --border-light: #E5E7EB;
-    }
-
-    body {
-      font-family: 'Cairo', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      line-height: 1.6;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 16px;
-      transition: background-color 0.25s ease, color 0.25s ease;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    /* --- MINIMAL TEXT NAVIGATION MENU --- */
-    .top-nav {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 18px;
-      margin-bottom: 32px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border-light);
-    }
-    .top-nav a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 13.5px;
-      font-weight: 600;
-      transition: color 0.2s ease;
-    }
-    .top-nav a:hover { color: var(--brand-purple); }
-    .top-nav .nav-sep { color: var(--border-light); font-size: 12px; }
-
-    /* --- HERO HEADLINE STRUCTURE --- */
-    .header-box { text-align: center; margin-bottom: 28px; }
-    .header-box h1 {
-      font-size: clamp(22px, 4.5vw, 34px);
-      font-weight: 900;
-      line-height: 1.38;
-      color: var(--text-main);
-      margin-bottom: 16px;
-    }
-    .header-box h1 .highlight { color: var(--brand-purple); }
-
-    .sub-description {
-      font-size: 15px;
-      color: var(--text-muted);
-      font-weight: 500;
-      line-height: 1.65;
-      max-width: 620px;
-      margin: 0 auto;
-    }
-
-    /* --- PURPLE CTA BUTTON --- */
-    .btn-cta {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      background: var(--brand-purple);
-      color: #FFFFFF;
-      font-size: 18px;
-      font-weight: 800;
-      padding: 16px 32px;
-      border-radius: 8px;
-      border: 1px solid var(--brand-purple-hover);
-      cursor: pointer;
-      box-shadow: 0 6px 20px rgba(139, 128, 240, 0.25);
-      transition: all 0.2s ease;
-      margin-top: 24px;
-    }
-    .btn-cta:hover {
-      background: var(--brand-purple-hover);
-      transform: translateY(-2px);
-    }
-
-    /* --- TESTIMONIAL IMAGE PLACEHOLDER --- */
-    .testimonial-placeholder-wrapper { margin: 36px 0; width: 100%; }
-    .image-placeholder {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background-color: var(--card-bg);
-      border: 2px dashed var(--brand-purple);
-      border-radius: 12px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: var(--brand-purple);
-      text-align: center;
-      padding: 20px;
-    }
-    .image-placeholder span { font-size: 14px; font-weight: 700; margin-top: 8px; }
-
-    /* --- LIST SECTIONS --- */
-    .info-section-title {
-      text-align: center;
-      font-size: 18px;
-      font-weight: 900;
-      color: var(--brand-purple);
-      margin: 40px 0 16px;
-    }
-
-    .check-list, .numbered-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-
-    .check-list li {
-      background: var(--card-bg);
-      border: 1px solid var(--border-light);
-      padding: 12px 16px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .check-list li::before {
-      content: "✓";
-      color: var(--brand-purple);
-      font-weight: 900;
-      font-size: 16px;
-    }
-
-    .numbered-list li {
-      background: transparent;
-      border-bottom: 1px solid var(--border-light);
-      padding: 12px 8px;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text-main);
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-    .numbered-list .num { color: var(--brand-purple); font-weight: 900; }
-
-    /* --- FOOTER --- */
-    footer { margin-top: 50px; text-align: center; width: 100%; }
-    .footer-pill {
-      max-width: 450px;
-      margin: 0 auto 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      padding: 10px 20px;
-      border-radius: 100px;
-      background: var(--card-bg);
-      border: 1px solid var(--border-light);
-    }
-    .footer-pill-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 600; margin: 0 8px; }
-    .footer-disclaimers { font-size: 11.5px; color: var(--text-muted); line-height: 1.6; }
-
-    /* --- POPUP MODAL --- */
-    .modal-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(4px);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      padding: 16px;
-    }
-    .modal-overlay.active { display: flex; }
-    
-    .modal-card {
-      background: var(--card-bg);
-      border-radius: 18px;
-      width: 100%;
-      max-width: 480px;
-      padding: 32px 28px;
-      position: relative;
-      border: 1px solid var(--border-light);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      animation: modalUp 0.25s ease-out;
-    }
-    @keyframes modalUp {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 16px; left: 16px;
-      background: none; border: none;
-      font-size: 22px; cursor: pointer; color: var(--text-muted);
-    }
-
-    .modal-card h2 { font-size: 20px; font-weight: 900; text-align: center; margin-bottom: 20px; color: var(--text-main); }
-    .form-group { margin-bottom: 14px; text-align: right; }
-    .form-group label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; color: var(--text-main); }
-    .form-group input {
-      width: 100%;
-      padding: 12px 14px;
-      border-radius: 8px;
-      border: 1px solid var(--border-light);
-      background: var(--bg-color);
-      color: var(--text-main);
-      font-family: inherit;
-      font-size: 14px;
-      outline: none;
-    }
-    .form-group input:focus { border-color: var(--brand-purple); }
-
-    /* Left-to-right alignment fix for LTR data */
-    #email, #whatsapp {
-      direction: ltr !important;
-      text-align: left !important;
-    }
-
-    .modal-disclaimer { font-size: 10px; color: var(--text-muted); line-height: 1.4; text-align: center; margin-top: 14px; }
-    
-    
-    /* Highlighted White Mailto Link */
-.footer-disclaimers a[href^="mailto:"] {
-  color: var(--text-main) !important;
-  font-weight: 400;
-  text-decoration: underline;
-}
-    
-    
-  </style>
 </head>
 <body>
 
@@ -287,6 +19,25 @@
       <a href="https://blog.bariabder.com/">المدونة · Blog</a>
       <span class="nav-sep">•</span>
       <a href="https://www.bariabder.com/idea/">أداة توليد الأفكار "Free"</a>
+      
+      <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle theme">
+    <!-- Sun icon for light mode -->
+    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+    <!-- Moon icon for dark mode -->
+    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+  </button>
     </nav>
 
     <!-- HERO HEADLINE STRUCTURE -->
