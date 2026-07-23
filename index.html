@@ -13,55 +13,50 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
     :root {
-      --bg-white: #FFFFFF;
+      /* Soft Slate-Gray Dark Palette (Default for 6 PM - 9 AM) */
+      --bg-color: #22242B;
+      --card-bg: #2C2E38;
+      --card-hover: #353844;
+      
+      --brand-purple: #8B80F0;
+      --brand-purple-hover: #786CD8;
+      --brand-purple-light: rgba(139, 128, 240, 0.15);
+
+      --text-main: #F8FAFC;
+      --text-muted: #CBD5E1;
+      --border-light: #3D4150;
+    }
+
+    body.light-theme {
+      /* Clean Light Palette (Default for 9 AM - 6 PM) */
+      --bg-color: #FFFFFF;
+      --card-bg: #F9FAFB;
+      --card-hover: #F3F4F6;
+
       --brand-purple: #524AB5;
       --brand-purple-hover: #413A96;
-      --brand-purple-light: rgba(82, 74, 181, 0.08);
-      --text-dark: #111827;
-      --text-muted: #7d72d8;
+
+      --text-main: #111827;
+      --text-muted: #4B5563;
       --border-light: #E5E7EB;
-      --card-bg-light: #F9FAFB;
     }
 
     body {
       font-family: 'Cairo', sans-serif;
-      background-color: var(--bg-white);
-      color: var(--text-dark);
+      background-color: var(--bg-color);
+      color: var(--text-main);
       line-height: 1.6;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 40px 16px;
+      transition: background-color 0.25s ease, color 0.25s ease;
     }
 
     .container {
       width: 100%;
       max-width: 680px;
       margin: 0 auto;
-    }
-
-    /* --- BRANDING TOP HEADER --- */
-    .brand-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-    .brand-logo-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .brand-logo-item img {
-      height: 28px;
-      width: auto;
-    }
-    .brand-logo-text {
-      font-size: 14px;
-      font-weight: 800;
-      color: var(--text-dark);
-      letter-spacing: 0.05em;
     }
 
     /* --- MINIMAL TEXT NAVIGATION MENU --- */
@@ -81,31 +76,23 @@
       font-weight: 600;
       transition: color 0.2s ease;
     }
-    .top-nav a:hover {
-      color: var(--brand-purple);
-    }
-    .top-nav .nav-sep {
-      color: var(--border-light);
-      font-size: 12px;
-    }
+    .top-nav a:hover { color: var(--brand-purple); }
+    .top-nav .nav-sep { color: var(--border-light); font-size: 12px; }
 
     /* --- HERO HEADLINE STRUCTURE --- */
     .header-box { text-align: center; margin-bottom: 28px; }
-    
     .header-box h1 {
       font-size: clamp(22px, 4.5vw, 34px);
       font-weight: 900;
       line-height: 1.38;
-      color: var(--text-dark);
+      color: var(--text-main);
       margin-bottom: 16px;
     }
-    .header-box h1 .highlight {
-      color: var(--brand-purple);
-    }
+    .header-box h1 .highlight { color: var(--brand-purple); }
 
     .sub-description {
       font-size: 15px;
-      color: #4B5563;
+      color: var(--text-muted);
       font-weight: 500;
       line-height: 1.65;
       max-width: 620px;
@@ -127,25 +114,21 @@
       border-radius: 8px;
       border: 1px solid var(--brand-purple-hover);
       cursor: pointer;
-      box-shadow: 0 6px 20px rgba(82, 74, 181, 0.25);
+      box-shadow: 0 6px 20px rgba(139, 128, 240, 0.25);
       transition: all 0.2s ease;
       margin-top: 24px;
     }
     .btn-cta:hover {
       background: var(--brand-purple-hover);
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(82, 74, 181, 0.35);
     }
 
     /* --- TESTIMONIAL IMAGE PLACEHOLDER --- */
-    .testimonial-placeholder-wrapper {
-      margin: 36px 0;
-      width: 100%;
-    }
+    .testimonial-placeholder-wrapper { margin: 36px 0; width: 100%; }
     .image-placeholder {
       width: 100%;
       aspect-ratio: 16 / 9;
-      background-color: var(--card-bg-light);
+      background-color: var(--card-bg);
       border: 2px dashed var(--brand-purple);
       border-radius: 12px;
       display: flex;
@@ -156,11 +139,7 @@
       text-align: center;
       padding: 20px;
     }
-    .image-placeholder span {
-      font-size: 14px;
-      font-weight: 700;
-      margin-top: 8px;
-    }
+    .image-placeholder span { font-size: 14px; font-weight: 700; margin-top: 8px; }
 
     /* --- LIST SECTIONS --- */
     .info-section-title {
@@ -180,13 +159,13 @@
     }
 
     .check-list li {
-      background: var(--card-bg-light);
+      background: var(--card-bg);
       border: 1px solid var(--border-light);
       padding: 12px 16px;
       border-radius: 8px;
       font-size: 14px;
       font-weight: 700;
-      color: var(--text-dark);
+      color: var(--text-main);
       display: flex;
       align-items: center;
       gap: 10px;
@@ -199,32 +178,18 @@
     }
 
     .numbered-list li {
-      background: var(--bg-white);
+      background: transparent;
       border-bottom: 1px solid var(--border-light);
       padding: 12px 8px;
       font-size: 14px;
       font-weight: 700;
-      color: var(--text-dark);
+      color: var(--text-main);
       display: flex;
       align-items: flex-start;
       gap: 12px;
     }
-    .numbered-list .num {
-      color: var(--brand-purple);
-      font-weight: 900;
-    }
-/* Fix direction for Email and WhatsApp inputs */
-#email, 
-#whatsapp {
-  direction: ltr !important;
-  text-align: left !important;
-}
+    .numbered-list .num { color: var(--brand-purple); font-weight: 900; }
 
-/* Optional: Add placeholder text-alignment fix if needed */
-#email::placeholder,
-#whatsapp::placeholder {
-  text-align: left !important;
-}
     /* --- FOOTER --- */
     footer { margin-top: 50px; text-align: center; width: 100%; }
     .footer-pill {
@@ -236,24 +201,17 @@
       gap: 20px;
       padding: 10px 20px;
       border-radius: 100px;
-      background: var(--card-bg-light);
+      background: var(--card-bg);
       border: 1px solid var(--border-light);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
     }
-    .footer-pill-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-      margin: 0 8px;
-    }
-    .footer-disclaimers { font-size: 11.5px; color: #888; line-height: 1.6; }
+    .footer-pill-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 600; margin: 0 8px; }
+    .footer-disclaimers { font-size: 11.5px; color: var(--text-muted); line-height: 1.6; }
 
     /* --- POPUP MODAL --- */
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.65);
+      background: rgba(0, 0, 0, 0.6);
       backdrop-filter: blur(4px);
       display: none;
       justify-content: center;
@@ -264,13 +222,14 @@
     .modal-overlay.active { display: flex; }
     
     .modal-card {
-      background: var(--bg-white);
+      background: var(--card-bg);
       border-radius: 18px;
       width: 100%;
       max-width: 480px;
       padding: 32px 28px;
       position: relative;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border-light);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
       animation: modalUp 0.25s ease-out;
     }
     @keyframes modalUp {
@@ -282,38 +241,42 @@
       position: absolute;
       top: 16px; left: 16px;
       background: none; border: none;
-      font-size: 22px; cursor: pointer; color: #888;
+      font-size: 22px; cursor: pointer; color: var(--text-muted);
     }
 
-    .modal-card h2 {
-      font-size: 20px;
-      font-weight: 900;
-      text-align: center;
-      margin-bottom: 20px;
-      color: var(--text-dark);
-    }
-
+    .modal-card h2 { font-size: 20px; font-weight: 900; text-align: center; margin-bottom: 20px; color: var(--text-main); }
     .form-group { margin-bottom: 14px; text-align: right; }
-    .form-group label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; color: var(--text-main); }
     .form-group input {
       width: 100%;
       padding: 12px 14px;
       border-radius: 8px;
       border: 1px solid var(--border-light);
-      background: #FFFFFF;
+      background: var(--bg-color);
+      color: var(--text-main);
       font-family: inherit;
       font-size: 14px;
       outline: none;
     }
     .form-group input:focus { border-color: var(--brand-purple); }
 
-    .modal-disclaimer {
-      font-size: 10px;
-      color: #777;
-      line-height: 1.4;
-      text-align: center;
-      margin-top: 14px;
+    /* Left-to-right alignment fix for LTR data */
+    #email, #whatsapp {
+      direction: ltr !important;
+      text-align: left !important;
     }
+
+    .modal-disclaimer { font-size: 10px; color: var(--text-muted); line-height: 1.4; text-align: center; margin-top: 14px; }
+    
+    
+    /* Highlighted White Mailto Link */
+.footer-disclaimers a[href^="mailto:"] {
+  color: var(--text-main) !important;
+  font-weight: 400;
+  text-decoration: underline;
+}
+    
+    
   </style>
 </head>
 <body>
@@ -321,12 +284,9 @@
   <div class="container">
     <!-- CLEAN MINIMAL TEXT NAVIGATION MENU -->
     <nav class="top-nav">
-      <div class="brand-logo-item">
-        <img src="main-logo.svg" alt="OTM System Logo">
-      </div>
-      <a href="https://blog.bariabder.com/">My Blog</a>
+      <a href="/blog">المدونة · Blog</a>
       <span class="nav-sep">•</span>
-      <a href="https://bariabder.com/idea">أداة توليد الأفكار "مجانية"</a>
+      <a href="/ideation-tool">أداة توليد الأفكار "Free"</a>
     </nav>
 
     <!-- HERO HEADLINE STRUCTURE -->
@@ -395,81 +355,85 @@
   </div>
 
   <!-- POPUP FORM MODAL -->
-<div class="modal-overlay" id="leadModal">
-  <div class="modal-card">
-    <button class="close-btn" onclick="closeModal()">&times;</button>
-    <h2>أدخل معلوماتك لمشاهدة الفيديو ✍️</h2>
-    
-    <form id="leadForm">
-      <div class="form-group">
-        <label for="fullName">الإسم الكامل | Full Name</label>
-        <input type="text" id="fullName" name="fullName" placeholder="أدخل اسمك الكامل..." required>
-      </div>
+  <div class="modal-overlay" id="leadModal">
+    <div class="modal-card">
+      <button class="close-btn" onclick="closeModal()">&times;</button>
+      <h2>أدخل معلوماتك لمشاهدة الفيديو ✍️</h2>
+      
+      <form id="leadForm">
+        <div class="form-group">
+          <label for="fullName">الإسم الكامل | Full Name</label>
+          <input type="text" id="fullName" name="fullName" placeholder="أدخل اسمك الكامل..." required>
+        </div>
 
-      <div class="form-group">
-        <label for="email">البريد الإلكتروني | Email</label>
-        <input type="text" id="email" name="email" placeholder="example@gmail.com">
-      </div>
+        <div class="form-group">
+          <label for="email">البريد الإلكتروني | Email</label>
+          <input type="text" id="email" name="email" placeholder="example@gmail.com">
+        </div>
 
-      <div class="form-group">
-        <label for="whatsapp">رقم الواتساب | WhatsApp Number</label>
-        <input type="text" id="whatsapp" name="whatsapp" placeholder="+212 666666666">
-      </div>
+        <div class="form-group">
+          <label for="whatsapp">رقم الواتساب | WhatsApp Number</label>
+          <input type="text" id="whatsapp" name="whatsapp" placeholder="+212 600-000000">
+        </div>
 
-      <button type="submit" class="btn-cta" style="margin-top: 10px;">
-        شاهد الفيديو الآن
-      </button>
+        <button type="submit" class="btn-cta" style="margin-top: 10px;">
+          شاهد الفيديو الآن
+        </button>
 
-      <p class="modal-disclaimer">
-        بإدخال معلوماتك، فإنك توافق على استقبال التحديثات والمحتوى الخاص بنظام OTM System™. يمكنك إلغاء الاشتراك في أي وقت.
-      </p>
-    </form>
+        <p class="modal-disclaimer">
+          بإدخال معلوماتك، فإنك توافق على استقبال التحديثات والمحتوى الخاص بنظام OTM System™. يمكنك إلغاء الاشتراك في أي وقت.
+        </p>
+      </form>
+    </div>
   </div>
-</div>
 
   <script>
-  const modal = document.getElementById('leadModal');
-  const form = document.getElementById('leadForm');
+    const modal = document.getElementById('leadModal');
+    const form = document.getElementById('leadForm');
 
- 
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbwOY0x3vOCKvI4uIRlc1VsYGq-sN5t90U1p_7jOiELewGNeesXOqEfnFbJcZBrnFJk-QQ/exec'; 
+    const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE'; 
 
-  function openModal() {
-    modal.classList.add('active');
-  }
+    // Auto theme check based on local device time (6 PM to 9 AM = Dark)
+    (function checkTimeTheme() {
+      const currentHour = new Date().getHours();
+      if (currentHour >= 9 && currentHour < 18) {
+        document.body.classList.add('light-theme');
+      } else {
+        document.body.classList.remove('light-theme');
+      }
+    })();
 
-  function closeModal() {
-    modal.classList.remove('active');
-  }
+    function openModal() { modal.classList.add('active'); }
+    function closeModal() { modal.classList.remove('active'); }
 
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
-  });
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const submitBtn = form.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-    submitBtn.innerText = 'جاري التحويل...';
-
-    const searchParams = new URLSearchParams(new FormData(form));
-
-    fetch(scriptURL, {
-      method: 'POST',
-      mode: 'no-cors',
-      body: searchParams
-    })
-    .then(() => {
-      window.location.href = 'https://www.bariabder.com/explainer';
-    })
-    .catch(error => {
-      console.error('Error submitting form:', error);
-      alert('حدث خطأ أثناء إرسال البيانات، يرجى إعادة المحاولة.');
-      submitBtn.disabled = false;
-      submitBtn.innerText = 'شاهد الفيديو الآن';
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
     });
-  });
-</script>
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'جاري التحويل...';
+
+      const searchParams = new URLSearchParams(new FormData(form));
+
+      fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: searchParams
+      })
+      .then(() => {
+        window.location.href = 'https://www.bariabder.com/explainer';
+      })
+      .catch(error => {
+        console.error('Error submitting form:', error);
+        alert('حدث خطأ أثناء إرسال البيانات، يرجى إعادة المحاولة.');
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'شاهد الفيديو الآن';
+      });
+    });
+  </script>
 </body>
 </html>
